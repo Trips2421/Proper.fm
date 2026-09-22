@@ -2,32 +2,33 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const services = [
-  { title: 'HVAC & Refrigeration', desc: 'Heating, cooling, and refrigeration kept running so nothing in the kitchen or on the floor goes down.' },
-  { title: 'Electrical & Lighting', desc: 'Repairs, LED retrofits, and signage power — handled before a flicker becomes a shutdown.' },
-  { title: 'Plumbing', desc: 'Leaks, drains, fixtures, and water systems serviced across every location on your list.' },
-  { title: 'General Handyman & Repair', desc: 'The everyday fixes that keep a location looking and functioning the way your brand promises.' },
-  { title: '24/7 Emergency Response', desc: 'One number, dispatched nationwide, with a tech on the way when something breaks after hours.' },
-  { title: 'Preventive Maintenance', desc: 'Scheduled service programs that catch small issues before they become closures.' },
+  { title: 'Daily Janitorial & Porter Services', desc: 'Nightly and daily cleaning routes plus on-site day porters, so restrooms and common areas stay guest-ready.', href: '/services#janitorial' },
+  { title: 'Floor Care', desc: 'Carpet, concrete, stone, tile, and wood floor cleaning, restoration, repair, and installation.', href: '/services#floor-care' },
+  { title: 'Window & Glass Cleaning', desc: 'Storefront and interior glass kept spotless, on a recurring route or as a one-time job.', href: '/services#window-glass' },
+  { title: 'Pressure Washing & Softwashing', desc: 'Sidewalks, drive-thrus, dumpster pads, and exteriors washed to look like opening day.', href: '/services#exterior' },
+  { title: 'Construction & Turnover Cleanup', desc: 'Post-construction and remodel cleanup that gets a location from job site to open.', href: '/services#construction-cleanup' },
+  { title: 'Facilities Repairs & Maintenance', desc: 'General maintenance, plumbing, pest control, HVAC, electrical, and signage — added on when you need one partner for everything.', href: '/services#facilities-services' },
 ];
 
 const steps = [
-  { n: '01', title: 'One call or ticket', desc: 'Your team reports an issue once — to us, not to a directory of local vendors.' },
-  { n: '02', title: 'Vetted tech dispatched', desc: 'We route it to a qualified technician in our network, matched to the trade and the location.' },
+  { n: '01', title: 'One call or ticket', desc: 'Your team reports a cleaning need or maintenance issue once — to us, not to a directory of local vendors.' },
+  { n: '02', title: 'Vetted crew dispatched', desc: 'We route it to a qualified cleaning crew or technician in our network, matched to the service and the location.' },
   { n: '03', title: 'Tracked to close', desc: 'Your account manager follows the job through completion and keeps a record for every site.' },
 ];
 ---
 <BaseLayout
-  title="National Facilities Management for Restaurants & Retail"
-  description="Proper Facilities Management is a national facilities partner for restaurant and retail brands — HVAC, electrical, plumbing, and 24/7 emergency response across every location, through one point of contact."
+  title="National Commercial Cleaning & Facilities Management for Restaurants & Retail"
+  description="Proper Facilities Management is a national commercial cleaning and facilities partner for restaurant and retail brands — daily janitorial, floor care, window cleaning, and pressure washing, plus HVAC, electrical, and plumbing, across every location, through one point of contact."
   path="/"
 >
   <section class="on-dark">
     <div class="wrap">
-      <span class="eyebrow">National Facilities Partner</span>
-      <h1 style="font-size:56px; max-width:760px;">Every location. Properly maintained.</h1>
+      <span class="eyebrow">National Cleaning & Facilities Partner</span>
+      <h1 style="font-size:56px; max-width:760px;">Every location. Properly cleaned.</h1>
       <p class="lede" style="font-size:19px; max-width:580px; margin-top:20px;">
-        One partner for HVAC, electrical, plumbing, and emergency repair across every restaurant or retail
-        location you operate — dispatched through a vetted network and tracked by a dedicated account manager.
+        One partner for commercial cleaning and janitorial — daily porter service, floor care, window cleaning, and
+        pressure washing — across every restaurant or retail location you operate. Dispatched through a vetted
+        network and tracked by a dedicated account manager. HVAC, electrical, and plumbing support included when you need it.
       </p>
       <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:32px;">
         <a href="/contact" class="btn btn-primary">Request a proposal</a>
@@ -40,7 +41,7 @@ const steps = [
     <div class="wrap">
       <span class="eyebrow">How It Works</span>
       <h2 class="section-title">One call. Every location, running right.</h2>
-      <p class="lede">No juggling a directory of local vendors per city. Proper is the single point of contact for every trade, at every site.</p>
+      <p class="lede">No juggling a directory of local cleaning crews and vendors per city. Proper is the single point of contact for cleaning and facilities care, at every site.</p>
       <div class="grid-3">
         {steps.map((s) => (
           <div class="card">
@@ -56,17 +57,17 @@ const steps = [
   <section class="on-white">
     <div class="wrap">
       <span class="eyebrow">Services</span>
-      <h2 class="section-title">Every trade your locations need</h2>
-      <p class="lede">From routine upkeep to the 2am call nobody wants to make — one partner covers it.</p>
+      <h2 class="section-title">Commercial cleaning first — facilities care when you need it</h2>
+      <p class="lede">From nightly janitorial to the 2am repair call nobody wants to make — one partner covers it.</p>
       <div class="grid-3">
         {services.map((svc) => (
-          <div class="card">
+          <a href={svc.href} class="card" style="text-decoration:none; display:block;">
             <div class="icn">
               <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#F3F1EC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3>{svc.title}</h3>
             <p>{svc.desc}</p>
-          </div>
+          </a>
         ))}
       </div>
       <div style="margin-top:32px;">
@@ -84,9 +85,9 @@ const steps = [
       </div>
       <ul class="checklist">
         <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A single point of contact across every location, in every city</li>
-        <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A vetted technician network covering every trade you need</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A vetted network of cleaning crews, day porters, and technicians</li>
         <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A dedicated account manager who knows your locations and standards</li>
-        <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Preventive maintenance programs built around your brand's standards</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Recurring cleaning and preventive maintenance programs built around your brand's standards</li>
       </ul>
     </div>
   </section>
@@ -98,11 +99,11 @@ const steps = [
       <div class="grid-2" style="margin-top:24px;">
         <a href="/industries#restaurants" class="card" style="text-decoration:none; display:block;">
           <h3 style="font-size:22px; margin-bottom:10px;">Restaurants</h3>
-          <p>Kitchen equipment, refrigeration, and dining-room upkeep that protects the guest experience — and the health inspection.</p>
+          <p>Dining room, restroom, and back-of-house cleaning plus kitchen equipment upkeep that protects the guest experience — and the health inspection.</p>
         </a>
         <a href="/industries#retail" class="card" style="text-decoration:none; display:block;">
           <h3 style="font-size:22px; margin-bottom:10px;">Retail</h3>
-          <p>Storefront, signage, and back-of-house maintenance that keeps every location on-brand and open.</p>
+          <p>Storefront glass, floor care, and facilities maintenance that keeps every location on-brand and open.</p>
         </a>
       </div>
     </div>

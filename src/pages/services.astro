@@ -1,67 +1,86 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const services = [
+const cleaningServices = [
   {
-    id: 'hvac',
-    title: 'HVAC & Refrigeration',
-    summary: 'Heating, cooling, and refrigeration service and repair for restaurant and retail locations, including walk-in coolers, reach-ins, and rooftop units.',
-    points: ['Scheduled preventive maintenance', 'Emergency repair dispatch', 'Walk-in cooler & reach-in service', 'Rooftop unit repair & replacement'],
+    id: 'janitorial',
+    title: 'Daily Janitorial & Porter Services',
+    summary: 'Recurring cleaning and on-site day porter coverage that keeps restrooms, break rooms, and common areas guest-ready every hour you\'re open.',
+    points: ['Nightly & daily janitorial routes', 'Dedicated day porter staffing', 'Restroom cleaning & restocking', 'Trash & recycling removal', 'Disinfection & sanitizing', 'High dusting & awning cleaning', 'Storm & water damage cleanup'],
   },
   {
-    id: 'electrical',
+    id: 'floor-care',
+    title: 'Floor Care',
+    summary: 'Every floor surface and finish — cleaned, restored, and maintained on a schedule built around your traffic and brand standards.',
+    points: ['Carpet cleaning & extraction', 'Concrete cleaning, polishing & coating', 'Stone & tile cleaning and sealing', 'Wood floor cleaning & refinishing', 'Floor repairs', 'Floor installation for remodels & rollouts'],
+  },
+  {
+    id: 'window-glass',
+    title: 'Window & Glass Cleaning',
+    summary: 'Storefront glass and interior windows kept spotless — because a clean window is the first impression a location makes.',
+    points: ['Storefront & display window cleaning', 'Interior glass & partition cleaning', 'Multi-story & high-rise window service', 'Recurring routes or one-time jobs'],
+  },
+  {
+    id: 'exterior',
+    title: 'Pressure Washing & Softwashing',
+    summary: 'Sidewalks, drive-thrus, dumpster pads, and building exteriors washed to keep every location looking like opening day.',
+    points: ['Pressure washing for concrete, sidewalks & drive-thrus', 'Softwashing for siding, awnings & delicate surfaces', 'Dumpster pad & grease containment cleaning', 'Graffiti & gum removal'],
+  },
+  {
+    id: 'construction-cleanup',
+    title: 'Construction & Turnover Cleanup',
+    summary: 'Post-construction and remodel cleanup that gets a location from job site to opening day, fast.',
+    points: ['Post-construction debris & dust removal', 'Final clean before grand opening', 'Remodel & rollout turnover cleaning', 'Punch-list-ready detail cleaning'],
+  },
+];
+
+const facilitiesServices = [
+  {
+    title: 'General Maintenance & Repairs',
+    points: ['Handyman repairs', 'Carpentry & fixture installs', 'Door, lock & hardware repair', 'Painting & touch-up', 'Water damage cleanup'],
+  },
+  {
+    title: 'Plumbing',
+    points: ['Leak detection & repair', 'Drain & grease trap cleaning', 'Water heater repair & replacement', 'Preventive maintenance programs'],
+  },
+  {
+    title: 'Pest Control',
+    points: ['Rodent & insect control', 'Seasonal & annual programs', 'Inspections & compliance reporting', 'Eco-friendly treatment options'],
+  },
+  {
+    title: 'HVAC & Refrigeration',
+    points: ['Heating & cooling repair', 'Walk-in cooler & reach-in service', 'Rooftop unit repair & replacement', 'Refrigeration equipment maintenance'],
+  },
+  {
     title: 'Electrical & Lighting',
-    summary: 'Electrical repair, lighting maintenance, and LED retrofits that keep a location safe, code-compliant, and on-brand.',
     points: ['Interior & exterior lighting repair', 'LED retrofit programs', 'Panel & circuit troubleshooting', 'Signage electrical service'],
   },
   {
-    id: 'plumbing',
-    title: 'Plumbing',
-    summary: 'Leak repair, drain service, and fixture maintenance across kitchens, restrooms, and back-of-house.',
-    points: ['Leak detection & repair', 'Drain & grease trap service', 'Fixture repair & replacement', 'Water heater service'],
-  },
-  {
-    id: 'handyman',
-    title: 'General Handyman & Repair',
-    summary: 'The everyday fixes — doors, hardware, drywall, flooring — that keep a location looking the way your brand standards require.',
-    points: ['Door & hardware repair', 'Drywall & paint touch-up', 'Flooring repair', 'Furniture & fixture repair'],
-  },
-  {
-    id: 'signage',
     title: 'Signage Maintenance',
-    summary: 'Storefront and pylon sign repair so every location is visible and on-brand, day and night.',
     points: ['Illuminated sign repair', 'Channel letter service', 'Pylon & monument sign maintenance'],
   },
   {
-    id: 'emergency',
     title: '24/7 Emergency Response',
-    summary: 'One number, dispatched nationwide, for the issue that can\'t wait until Monday.',
-    points: ['Nationwide dispatch network', 'After-hours & weekend coverage', 'Tracked from call to close'],
-  },
-  {
-    id: 'preventive',
-    title: 'Preventive Maintenance Programs',
-    summary: 'Scheduled service built around your brand standards, so small issues get caught before they become closures.',
-    points: ['Custom maintenance schedules by location', 'Compliance & inspection readiness', 'Asset tracking across your portfolio'],
+    points: ['Nationwide dispatch, one number to call', 'After-hours & weekend coverage', 'Storefront & glass emergency board-up', 'Tracked from call to close'],
   },
 ];
 
 const faqs = [
   {
-    q: 'What is facilities management for restaurants and retail chains?',
-    a: 'It\'s a single partner that coordinates every maintenance trade — HVAC, electrical, plumbing, handyman, and emergency repair — across all of a brand\'s locations, so operators don\'t have to manage a separate vendor in every city.',
+    q: 'What cleaning and facilities services does Proper provide?',
+    a: 'Proper\'s core service is commercial cleaning and janitorial — daily porter staffing, floor care, window and glass cleaning, pressure washing, and construction cleanup — across every restaurant and retail location a brand operates. We also cover general maintenance and repairs, plumbing, pest control, HVAC, electrical, and signage, so operators can consolidate cleaning and maintenance with one partner.',
   },
   {
-    q: 'How does Proper handle multiple locations in different cities?',
-    a: 'Proper dispatches through a vetted national network of technicians, matched by trade and location, and tracks every job through a single account manager — so the process is identical whether it\'s one site or a hundred.',
+    q: 'Does Proper handle recurring janitorial service, or just one-time cleaning jobs?',
+    a: 'Both. Most locations run on a recurring nightly or daily janitorial schedule, and we also handle one-time and periodic jobs like floor restoration, post-construction cleanup, and pressure washing as needed.',
   },
   {
-    q: 'Does Proper handle emergency repairs after hours?',
-    a: 'Yes. Proper provides 24/7 emergency response with one number to call, dispatched nationwide, tracked from the first call to job completion.',
+    q: 'How does Proper manage cleaning across multiple locations in different cities?',
+    a: 'Proper dispatches through a vetted national network of cleaning crews and day porters, matched by location, and tracks every route and job through a single account manager — so service is consistent whether it\'s one site or a hundred.',
   },
 ];
 
-const serviceSchema = services.map((s) => ({
+const serviceSchema = [...cleaningServices, ...facilitiesServices.map((f) => ({ id: f.title, title: f.title, summary: f.points.join(', ') }))].map((s) => ({
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: s.title,
@@ -82,19 +101,27 @@ const faqSchema = {
 ---
 <BaseLayout
   title="Services"
-  description="HVAC, electrical, plumbing, handyman, signage, preventive maintenance, and 24/7 emergency response — every facilities trade a restaurant or retail location needs, from one partner."
+  description="Commercial cleaning and janitorial — daily porter service, floor care, window cleaning, pressure washing, and construction cleanup — plus general maintenance, plumbing, pest control, HVAC, and electrical support, for restaurant and retail locations nationwide."
   path="/services"
   schema={[...serviceSchema, faqSchema]}
 >
   <section class="on-dark tight">
     <div class="wrap">
       <span class="eyebrow">Services</span>
-      <h1 style="font-size:44px; max-width:700px;">Every trade your locations need, from one partner</h1>
-      <p class="lede" style="margin-top:16px;">Dispatched through a vetted national network. Tracked by a dedicated account manager. No pricing surprises — every proposal is scoped to your locations.</p>
+      <h1 style="font-size:44px; max-width:700px;">Commercial cleaning, janitorial, and facilities care — from one partner</h1>
+      <p class="lede" style="margin-top:16px;">Dispatched through a vetted national network of cleaning crews, day porters, and technicians. Tracked by a dedicated account manager. No pricing surprises — every proposal is scoped to your locations.</p>
     </div>
   </section>
 
-  {services.map((svc, i) => (
+  <section class="on-cream tight">
+    <div class="wrap">
+      <span class="eyebrow">Core Service</span>
+      <h2 class="section-title" style="font-size:26px;">Commercial cleaning & janitorial</h2>
+      <p class="lede" style="margin-bottom:0;">This is what Proper does first and foremost — recurring cleaning, floor care, and site upkeep built around how your locations actually run.</p>
+    </div>
+  </section>
+
+  {cleaningServices.map((svc, i) => (
     <section id={svc.id} class={i % 2 === 0 ? 'on-white' : 'on-cream'}>
       <div class="wrap grid-2">
         <div>
@@ -110,10 +137,31 @@ const faqSchema = {
     </section>
   ))}
 
+  <section id="facilities-services" class="on-dark">
+    <div class="wrap">
+      <span class="eyebrow">Additional Facilities Services</span>
+      <h2 class="section-title">Need repairs and maintenance too?</h2>
+      <p class="lede">Beyond cleaning, Proper also covers the trades your locations need — one added line item, not a new vendor to manage.</p>
+      <div class="grid-3">
+        {facilitiesServices.map((svc) => (
+          <div class="card">
+            <div class="icn">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#F3F1EC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>{svc.title}</h3>
+            <ul class="mini-list">
+              {svc.points.map((p) => (<li>{p}</li>))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="on-white">
     <div class="wrap">
       <span class="eyebrow">Common Questions</span>
-      <h2 class="section-title">Facilities management, answered directly</h2>
+      <h2 class="section-title">Cleaning & facilities management, answered directly</h2>
       <div class="grid-2" style="margin-top:16px;">
         {faqs.map((f) => (
           <div class="card">
@@ -127,7 +175,7 @@ const faqSchema = {
 
   <section class="on-dark tight">
     <div class="wrap" style="text-align:center;">
-      <h2 class="section-title">Ready to consolidate your facilities vendors?</h2>
+      <h2 class="section-title">Ready to consolidate your cleaning and facilities vendors?</h2>
       <a href="/contact" class="btn btn-primary" style="margin-top:20px;">Request a proposal</a>
     </div>
   </section>
