@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = [
+  {
+    id: 'hvac',
+    title: 'HVAC & Refrigeration',
+    summary: 'Heating, cooling, and refrigeration service and repair for restaurant and retail locations, including walk-in coolers, reach-ins, and rooftop units.',
+    points: ['Scheduled preventive maintenance', 'Emergency repair dispatch', 'Walk-in cooler & reach-in service', 'Rooftop unit repair & replacement'],
+  },
+  {
+    id: 'electrical',
+    title: 'Electrical & Lighting',
+    summary: 'Electrical repair, lighting maintenance, and LED retrofits that keep a location safe, code-compliant, and on-brand.',
+    points: ['Interior & exterior lighting repair', 'LED retrofit programs', 'Panel & circuit troubleshooting', 'Signage electrical service'],
+  },
+  {
+    id: 'plumbing',
+    title: 'Plumbing',
+    summary: 'Leak repair, drain service, and fixture maintenance across kitchens, restrooms, and back-of-house.',
+    points: ['Leak detection & repair', 'Drain & grease trap service', 'Fixture repair & replacement', 'Water heater service'],
+  },
+  {
+    id: 'handyman',
+    title: 'General Handyman & Repair',
+    summary: 'The everyday fixes — doors, hardware, drywall, flooring — that keep a location looking the way your brand standards require.',
+    points: ['Door & hardware repair', 'Drywall & paint touch-up', 'Flooring repair', 'Furniture & fixture repair'],
+  },
+  {
+    id: 'signage',
+    title: 'Signage Maintenance',
+    summary: 'Storefront and pylon sign repair so every location is visible and on-brand, day and night.',
+    points: ['Illuminated sign repair', 'Channel letter service', 'Pylon & monument sign maintenance'],
+  },
+  {
+    id: 'emergency',
+    title: '24/7 Emergency Response',
+    summary: 'One number, dispatched nationwide, for the issue that can\'t wait until Monday.',
+    points: ['Nationwide dispatch network', 'After-hours & weekend coverage', 'Tracked from call to close'],
+  },
+  {
+    id: 'preventive',
+    title: 'Preventive Maintenance Programs',
+    summary: 'Scheduled service built around your brand standards, so small issues get caught before they become closures.',
+    points: ['Custom maintenance schedules by location', 'Compliance & inspection readiness', 'Asset tracking across your portfolio'],
+  },
+];
+
+const faqs = [
+  {
+    q: 'What is facilities management for restaurants and retail chains?',
+    a: 'It\'s a single partner that coordinates every maintenance trade — HVAC, electrical, plumbing, handyman, and emergency repair — across all of a brand\'s locations, so operators don\'t have to manage a separate vendor in every city.',
+  },
+  {
+    q: 'How does Proper handle multiple locations in different cities?',
+    a: 'Proper dispatches through a vetted national network of technicians, matched by trade and location, and tracks every job through a single account manager — so the process is identical whether it\'s one site or a hundred.',
+  },
+  {
+    q: 'Does Proper handle emergency repairs after hours?',
+    a: 'Yes. Proper provides 24/7 emergency response with one number to call, dispatched nationwide, tracked from the first call to job completion.',
+  },
+];
+
+const serviceSchema = services.map((s) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: s.title,
+  description: s.summary,
+  provider: { '@type': 'Organization', name: 'Proper Facilities Management' },
+  areaServed: 'US',
+}));
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<BaseLayout
+  title="Services"
+  description="HVAC, electrical, plumbing, handyman, signage, preventive maintenance, and 24/7 emergency response — every facilities trade a restaurant or retail location needs, from one partner."
+  path="/services"
+  schema={[...serviceSchema, faqSchema]}
+>
+  <section class="on-dark tight">
+    <div class="wrap">
+      <span class="eyebrow">Services</span>
+      <h1 style="font-size:44px; max-width:700px;">Every trade your locations need, from one partner</h1>
+      <p class="lede" style="margin-top:16px;">Dispatched through a vetted national network. Tracked by a dedicated account manager. No pricing surprises — every proposal is scoped to your locations.</p>
+    </div>
+  </section>
+
+  {services.map((svc, i) => (
+    <section id={svc.id} class={i % 2 === 0 ? 'on-white' : 'on-cream'}>
+      <div class="wrap grid-2">
+        <div>
+          <h2 class="section-title" style="font-size:28px;">{svc.title}</h2>
+          <p class="lede" style="margin-bottom:0;">{svc.summary}</p>
+        </div>
+        <ul class="checklist">
+          {svc.points.map((p) => (
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>{p}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  ))}
+
+  <section class="on-white">
+    <div class="wrap">
+      <span class="eyebrow">Common Questions</span>
+      <h2 class="section-title">Facilities management, answered directly</h2>
+      <div class="grid-2" style="margin-top:16px;">
+        {faqs.map((f) => (
+          <div class="card">
+            <h3 style="font-size:17px;">{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="on-dark tight">
+    <div class="wrap" style="text-align:center;">
+      <h2 class="section-title">Ready to consolidate your facilities vendors?</h2>
+      <a href="/contact" class="btn btn-primary" style="margin-top:20px;">Request a proposal</a>
+    </div>
+  </section>
+</BaseLayout>

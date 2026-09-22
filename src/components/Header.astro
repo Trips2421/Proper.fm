@@ -1,0 +1,23 @@
+---
+import Logo from './Logo.astro';
+const nav = [
+  { href: '/services', label: 'Services' },
+  { href: '/industries', label: 'Industries' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+<header class="site-header">
+  <div class="wrap">
+    <a href="/" class="brand-lockup">
+      <span class="mark"><Logo variant="ink" /></span>
+      <span class="word">Proper</span>
+    </a>
+    <nav class="main-nav">
+      {nav.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+    <a href="/contact" class="cta nav-cta">Request a proposal</a>
+  </div>
+</header>

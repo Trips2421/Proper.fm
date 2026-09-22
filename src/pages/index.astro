@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = [
+  { title: 'HVAC & Refrigeration', desc: 'Heating, cooling, and refrigeration kept running so nothing in the kitchen or on the floor goes down.' },
+  { title: 'Electrical & Lighting', desc: 'Repairs, LED retrofits, and signage power — handled before a flicker becomes a shutdown.' },
+  { title: 'Plumbing', desc: 'Leaks, drains, fixtures, and water systems serviced across every location on your list.' },
+  { title: 'General Handyman & Repair', desc: 'The everyday fixes that keep a location looking and functioning the way your brand promises.' },
+  { title: '24/7 Emergency Response', desc: 'One number, dispatched nationwide, with a tech on the way when something breaks after hours.' },
+  { title: 'Preventive Maintenance', desc: 'Scheduled service programs that catch small issues before they become closures.' },
+];
+
+const steps = [
+  { n: '01', title: 'One call or ticket', desc: 'Your team reports an issue once — to us, not to a directory of local vendors.' },
+  { n: '02', title: 'Vetted tech dispatched', desc: 'We route it to a qualified technician in our network, matched to the trade and the location.' },
+  { n: '03', title: 'Tracked to close', desc: 'Your account manager follows the job through completion and keeps a record for every site.' },
+];
+---
+<BaseLayout
+  title="National Facilities Management for Restaurants & Retail"
+  description="Proper Facilities Management is a national facilities partner for restaurant and retail brands — HVAC, electrical, plumbing, and 24/7 emergency response across every location, through one point of contact."
+  path="/"
+>
+  <section class="on-dark">
+    <div class="wrap">
+      <span class="eyebrow">National Facilities Partner</span>
+      <h1 style="font-size:56px; max-width:760px;">Every location. Properly maintained.</h1>
+      <p class="lede" style="font-size:19px; max-width:580px; margin-top:20px;">
+        One partner for HVAC, electrical, plumbing, and emergency repair across every restaurant or retail
+        location you operate — dispatched through a vetted network and tracked by a dedicated account manager.
+      </p>
+      <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:32px;">
+        <a href="/contact" class="btn btn-primary">Request a proposal</a>
+        <a href="/services" class="btn btn-secondary">See our services</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-cream">
+    <div class="wrap">
+      <span class="eyebrow">How It Works</span>
+      <h2 class="section-title">One call. Every location, running right.</h2>
+      <p class="lede">No juggling a directory of local vendors per city. Proper is the single point of contact for every trade, at every site.</p>
+      <div class="grid-3">
+        {steps.map((s) => (
+          <div class="card">
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--moss); font-size:14px; margin-bottom:10px;">{s.n}</div>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white">
+    <div class="wrap">
+      <span class="eyebrow">Services</span>
+      <h2 class="section-title">Every trade your locations need</h2>
+      <p class="lede">From routine upkeep to the 2am call nobody wants to make — one partner covers it.</p>
+      <div class="grid-3">
+        {services.map((svc) => (
+          <div class="card">
+            <div class="icn">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#F3F1EC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>{svc.title}</h3>
+            <p>{svc.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:32px;">
+        <a href="/services" class="btn btn-secondary">See the full service list</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-dark">
+    <div class="wrap grid-2">
+      <div>
+        <span class="eyebrow">Why Proper</span>
+        <h2 class="section-title">Built for multi-location operators</h2>
+        <p class="lede">Facilities directors don't need another vendor — they need fewer of them.</p>
+      </div>
+      <ul class="checklist">
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A single point of contact across every location, in every city</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A vetted technician network covering every trade you need</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A dedicated account manager who knows your locations and standards</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Preventive maintenance programs built around your brand's standards</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="on-cream">
+    <div class="wrap">
+      <span class="eyebrow">Industries</span>
+      <h2 class="section-title">Built around how your business runs</h2>
+      <div class="grid-2" style="margin-top:24px;">
+        <a href="/industries#restaurants" class="card" style="text-decoration:none; display:block;">
+          <h3 style="font-size:22px; margin-bottom:10px;">Restaurants</h3>
+          <p>Kitchen equipment, refrigeration, and dining-room upkeep that protects the guest experience — and the health inspection.</p>
+        </a>
+        <a href="/industries#retail" class="card" style="text-decoration:none; display:block;">
+          <h3 style="font-size:22px; margin-bottom:10px;">Retail</h3>
+          <p>Storefront, signage, and back-of-house maintenance that keeps every location on-brand and open.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-dark tight">
+    <div class="wrap" style="text-align:center;">
+      <h2 class="section-title">Ready for one partner across every location?</h2>
+      <p class="lede" style="margin:0 auto 28px;">Tell us how many locations you operate and we'll put together a proposal.</p>
+      <a href="/contact" class="btn btn-primary">Request a proposal</a>
+    </div>
+  </section>
+</BaseLayout>

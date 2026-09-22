@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Request a Proposal"
+  description="Tell us about your locations and Proper Facilities Management will put together a proposal — one partner for HVAC, electrical, plumbing, and emergency response across every site."
+  path="/contact"
+>
+  <section class="on-dark tight">
+    <div class="wrap">
+      <span class="eyebrow">Contact</span>
+      <h1 style="font-size:44px; max-width:700px;">Tell us about your locations</h1>
+      <p class="lede" style="margin-top:16px;">A few details and we'll put together a proposal scoped to your portfolio — no generic rate card, no pricing surprises.</p>
+    </div>
+  </section>
+
+  <section class="on-white">
+    <div class="wrap grid-2">
+      <form class="quote-form" name="proposal-request" method="POST">
+        <div class="field-row">
+          <div>
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div>
+            <label for="company">Company / Brand</label>
+            <input type="text" id="company" name="company" required />
+          </div>
+        </div>
+        <div class="field-row">
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div>
+            <label for="locations">Number of locations</label>
+            <input type="text" id="locations" name="locations" placeholder="e.g. 12" />
+          </div>
+          <div>
+            <label for="industry">Industry</label>
+            <select id="industry" name="industry">
+              <option value="restaurant">Restaurant</option>
+              <option value="retail">Retail</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="message">What's going on across your locations?</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell us about the trades and issues you need covered."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="justify-self:start;">Send request</button>
+      </form>
+      <div>
+        <div class="card" style="margin-bottom:20px;">
+          <h3>What happens next</h3>
+          <ul class="checklist" style="margin-top:14px;">
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>We review your locations and trades within one business day</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A dedicated contact reaches out to scope your program</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>You get a proposal built around your locations — not a rate card</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Prefer email?</h3>
+          <p>Reach us directly at <a href="mailto:hello@properfacilities.com" style="color:var(--moss-deep); font-weight:600;">hello@properfacilities.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
