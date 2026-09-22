@@ -8,9 +8,10 @@ interface Props {
   description: string;
   path?: string;
   schema?: object | object[];
+  noindex?: boolean;
 }
 
-const { title, description, path = '/', schema } = Astro.props;
+const { title, description, path = '/', schema, noindex = false } = Astro.props;
 const siteUrl = 'https://properfacilities.com';
 const canonical = new URL(path, siteUrl).toString();
 const ogImage = new URL('/og-image.png', siteUrl).toString();
@@ -37,6 +38,7 @@ const allSchema = [orgSchema, ...schemaList];
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content={`${title} | Proper Facilities Management`} />
