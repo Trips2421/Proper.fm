@@ -195,6 +195,23 @@ form.quote-form input:focus, form.quote-form select:focus, form.quote-form texta
 }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 
+.partners-strip {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 40px; margin-top: 32px;
+}
+.partners-strip img {
+  height: 26px; width: auto; max-width: 160px;
+  filter: grayscale(100%); opacity: 0.6;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+.partners-strip img:hover { filter: none; opacity: 1; }
+.partners-strip .text-mark {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 19px;
+  color: var(--muted-2); letter-spacing: 0.2px; opacity: 0.75;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+.partners-strip .text-mark:hover { color: var(--ink); opacity: 1; }
+
 .form-status { font-size: 14.5px; font-weight: 600; padding: 14px 16px; border-radius: 8px; margin: 0; }
 .form-status-success { background: var(--moss-tint); color: var(--moss-deep); }
 .form-status-error { background: #FBE4E1; color: #8A2C22; }

@@ -15,6 +15,14 @@ const steps = [
   { n: '02', title: 'Vetted crew dispatched', desc: 'We route it to a qualified cleaning crew or technician in our network, matched to the service and the location.' },
   { n: '03', title: 'Tracked to close', desc: 'Your account manager follows the job through completion and keeps a record for every site.' },
 ];
+
+const partners = [
+  { name: 'ServiceChannel', img: '/partners/servicechannel.svg' },
+  { name: 'MaintainX', img: '/partners/maintainx.svg' },
+  { name: 'Fixxbook', img: null },
+  { name: 'RFMA', img: null },
+  { name: 'ConnexFM', img: '/partners/connexfm.png' },
+];
 ---
 <BaseLayout
   title="National Commercial Cleaning & Facilities Management for Restaurants & Retail"
@@ -34,6 +42,13 @@ const steps = [
         <a href="/contact" class="btn btn-primary">Request a proposal</a>
         <a href="/services" class="btn btn-secondary">See our services</a>
       </div>
+    </div>
+  </section>
+
+  <section class="on-white tight">
+    <div class="wrap" style="text-align:center;">
+      <span class="eyebrow">Trusted By</span>
+      <p class="lede" style="max-width:720px; margin:0 auto;">Proper partners with national restaurant and retail brands — from fast-casual and quick-service dining to specialty apparel retail — who need one partner they can trust across every location.</p>
     </div>
   </section>
 
@@ -105,6 +120,20 @@ const steps = [
           <h3 style="font-size:22px; margin-bottom:10px;">Retail</h3>
           <p>Storefront glass, floor care, and facilities maintenance that keeps every location on-brand and open.</p>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white tight">
+    <div class="wrap" style="text-align:center;">
+      <span class="eyebrow">Technology & Network Partners</span>
+      <h2 class="section-title" style="font-size:24px; margin-bottom:8px;">Backed by the platforms and networks facilities teams already use</h2>
+      <div class="partners-strip">
+        {partners.map((p) => (
+          p.img
+            ? <img src={p.img} alt={`${p.name} logo`} />
+            : <span class="text-mark">{p.name}</span>
+        ))}
       </div>
     </div>
   </section>
