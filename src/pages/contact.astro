@@ -16,7 +16,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <section class="on-white">
     <div class="wrap grid-2">
-      <form class="quote-form" name="proposal-request" method="POST">
+      <form class="quote-form" id="proposal-form" name="proposal-request" method="POST" action="https://api.web3forms.com/submit">
+        <input type="hidden" name="access_key" value="87e819b8-db89-4507-a035-931bcb5f4f2b" />
+        <input type="hidden" name="subject" value="New proposal request — Proper Facilities Management" />
+        <input type="hidden" name="from_name" value="Proper Facilities Management website" />
+        <input type="hidden" name="redirect" value="https://properfacilities.com/contact?sent=true" />
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
         <div class="field-row">
           <div>
             <label for="name">Full name</label>
@@ -55,8 +61,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <label for="message">What's going on across your locations?</label>
           <textarea id="message" name="message" rows="5" placeholder="Tell us about the trades and issues you need covered."></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" style="justify-self:start;">Send request</button>
+        <button type="submit" class="btn btn-primary" id="proposal-submit" style="justify-self:start;">Send request</button>
       </form>
+      <p id="proposal-status" class="form-status form-status-success" role="status" aria-live="polite" style="display:none; max-width:560px;">Thanks — we've got your request and will be in touch within one business day.</p>
+
+      <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('sent') === 'true') {
+          const form = document.getElementById('proposal-form');
+          const status = document.getElementById('proposal-status');
+          if (form) form.style.display = 'none';
+          if (status) status.style.display = 'block';
+        }
+
+        const submitBtn = document.getElementById('proposal-submit');
+        const formEl = document.getElementById('proposal-form');
+        formEl?.addEventListener('submit', () => {
+          if (submitBtn) {
+            submitBtn.setAttribute('disabled', 'true');
+            submitBtn.textContent = 'Sending...';
+          }
+        });
+      </script>
       <div>
         <div class="card" style="margin-bottom:20px;">
           <h3>What happens next</h3>
