@@ -1,10 +1,36 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: 'Does Proper work with multi-location restaurant chains?',
+    a: 'Yes. Restaurants are one of Proper\'s two core industries. We cover nightly janitorial for dining rooms and restrooms, kitchen floor care and equipment cleaning, walk-in cooler and refrigeration upkeep, and HVAC, lighting, and plumbing for the front and back of house — all through one account across every location.',
+  },
+  {
+    q: 'Can Proper handle retail rollouts and remodels across multiple states?',
+    a: 'Yes. Proper provides turnover and post-construction cleaning for retail remodels and new-store rollouts nationwide, on the same account as ongoing recurring services like floor care and storefront glass cleaning, so a multi-state rollout doesn\'t require a separate vendor in each market.',
+  },
+  {
+    q: 'Does Proper offer different service plans for restaurants vs. retail?',
+    a: 'Yes. Every proposal is scoped to the industry and location type — restaurant programs are built around kitchen equipment, grease management, and health-inspection readiness, while retail programs focus on sales-floor presentation, storefront glass, and brand-standard consistency across locations.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 <BaseLayout
   title="Industries We Serve"
   description="Proper Facilities Management serves multi-location restaurant and retail brands with facilities maintenance built around the demands of each industry."
   path="/industries"
+  schema={faqSchema}
 >
   <section class="on-dark tight">
     <div class="wrap">
@@ -53,6 +79,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Doors, hardware, flooring, and fixture repair</li>
         <li><span class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Remodel and rollout turnover cleaning across multiple sites</li>
       </ul>
+    </div>
+  </section>
+
+  <section class="on-white">
+    <div class="wrap">
+      <span class="eyebrow">Common Questions</span>
+      <h2 class="section-title">Restaurant & retail facilities, answered directly</h2>
+      <div class="grid-2" style="margin-top:16px;">
+        {faqs.map((f) => (
+          <div class="card">
+            <h3 style="font-size:17px;">{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 

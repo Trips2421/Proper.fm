@@ -24,11 +24,41 @@ const partners = [
   { name: 'ConnexFM', img: '/partners/connexfm.png' },
   { name: 'Facil-IT', img: '/partners/facilit.png' },
 ];
+
+const faqs = [
+  {
+    q: 'What does Proper Facilities Management do?',
+    a: 'Proper is a national commercial cleaning and facilities management partner for multi-location restaurant and retail brands. Our core service is commercial cleaning and janitorial — daily porter staffing, floor care, window and glass cleaning, and pressure washing — and we also cover general maintenance, plumbing, pest control, HVAC, electrical, and signage on the same account.',
+  },
+  {
+    q: 'What areas does Proper serve?',
+    a: 'Proper dispatches through a vetted national network of cleaning crews, day porters, and technicians across the United States, so a multi-location operator can use one partner regardless of how many states or cities they operate in.',
+  },
+  {
+    q: 'How is Proper different from hiring a local cleaning company at each location?',
+    a: 'A local cleaning company only covers one site. Proper is the single point of contact across every location — one call or ticket, one account manager, and one standard of work, instead of managing a different vendor in every market.',
+  },
+  {
+    q: 'How do I get a proposal from Proper?',
+    a: 'Request a proposal through our contact form with your number of locations, industry, and service needs. A proposal is scoped to your actual locations — never a generic rate card.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 <BaseLayout
   title="National Commercial Cleaning & Facilities Management for Restaurants & Retail"
   description="Proper Facilities Management is a national commercial cleaning and facilities partner for restaurant and retail brands — daily janitorial, floor care, window cleaning, and pressure washing, plus HVAC, electrical, and plumbing, across every location, through one point of contact."
   path="/"
+  schema={faqSchema}
 >
   <section class="on-dark">
     <div class="wrap">
@@ -134,6 +164,21 @@ const partners = [
           p.img
             ? <img src={p.img} alt={`${p.name} logo`} />
             : <span class="text-mark">{p.name}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white">
+    <div class="wrap">
+      <span class="eyebrow">Common Questions</span>
+      <h2 class="section-title">Quick answers before you reach out</h2>
+      <div class="grid-2" style="margin-top:16px;">
+        {faqs.map((f) => (
+          <div class="card">
+            <h3 style="font-size:17px;">{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
         ))}
       </div>
     </div>

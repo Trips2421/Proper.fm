@@ -1,11 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: 'Who is Proper Facilities Management?',
+    a: 'Proper is a national commercial cleaning and facilities management partner built for multi-location restaurant and retail operators — one point of contact, one account manager, and one standard of work across every site.',
+  },
+  {
+    q: 'Is Proper a cleaning company or a facilities management company?',
+    a: 'Both — commercial cleaning and janitorial is Proper\'s core, flagship service, and we layer general maintenance, plumbing, pest control, HVAC, electrical, and signage onto the same account so operators don\'t need a separate vendor for each.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 <BaseLayout
   title="About"
   description="Proper Facilities Management is a national facilities partner built for restaurant and retail operators who need one point of contact across every location."
   path="/about"
   noindex={true}
+  schema={faqSchema}
 >
   <section class="on-dark tight">
     <div class="wrap">
@@ -52,6 +74,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h3>No pricing surprises</h3>
           <p>Every proposal is scoped to your actual locations and needs — never a generic rate card.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-white">
+    <div class="wrap">
+      <span class="eyebrow">Common Questions</span>
+      <h2 class="section-title">About Proper, answered directly</h2>
+      <div class="grid-2" style="margin-top:16px;">
+        {faqs.map((f) => (
+          <div class="card">
+            <h3 style="font-size:17px;">{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
